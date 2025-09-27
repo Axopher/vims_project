@@ -17,7 +17,7 @@ A multi-tenant school/institute management system built with **Django**, **Postg
 1. Clone the repository:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Axopher/vims_project.git
 cd vims
 ```
 
