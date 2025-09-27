@@ -1,0 +1,32 @@
+from .base import *
+
+DEBUG = False
+
+LIVE = False
+
+ALLOWED_HOSTS = [
+]
+
+CSRF_TRUSTED_ORIGINS = [
+]
+
+CORS_ALLOWED_ORIGINS = [
+]
+
+CELERY_BROKER_URL = ""
+
+CACHES = {
+
+}
+
+EMAIL_HOST = ""
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_PORT = ""
+DEFAULT_FROM_EMAIL = ""
+
+EMAIL_USE_TLS = False
+
+FRONT_END_BASE_URL = ""
+
+

@@ -1,0 +1,56 @@
+# ---- Python / Django ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pot
+*.mo
+*.coverage
+.coverage.*
+*.pytest_cache/
+*.mypy_cache/
+*.ruff_cache/
+*.pyre/
+*.pytype/
+
+# Django media/uploads (keep empty dirs with .gitkeep if needed)
+backend/media/
+
+# Environment & settings
+.env
+*.env
+!.env.example
+
+# ---- Node / Frontend ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.vite/
+dist/
+
+# ---- IDE / OS files ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- Docker ----
+*.pid
+*.seed
+*.bak
+*.tar
+*.tmp
+
+# ---- Virtualenv ----
+venv/
+ENV/
+env/
+
+
+local.py

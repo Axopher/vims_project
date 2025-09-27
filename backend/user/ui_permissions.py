@@ -1,0 +1,45 @@
+# apps/users/permissions.py
+UI_ROLE_PERMISSIONS = {
+    "director": [
+        "dashboard:view",
+        "employee:view",
+        "employee:create",
+        "employee:edit",
+        "employee:detail:view",
+        "employee:delete",
+        "student:view",
+        "student:create",
+        "student:edit",
+        "student:delete",
+        "course:view",
+        "course:create",
+        "finance:view",
+    ],
+    "tenant_admin": [
+        "dashboard:view",
+        "employee:view",
+        "employee:detail:view",
+        "student:view",
+        "student:create",
+        "course:view",
+        "course:create",
+    ],
+    "student": [
+        "dashboard:view",
+        "course:view",
+    ],
+    "instructor": [
+        "dashboard:view",
+        "student:view",
+        "student:create",
+        "student:edit",
+        "course:view",
+        "course:create",
+        "course:edit",
+    ],
+    "accountant": [
+        "dashboard:view",
+        "employee:view",
+        "finance:view",
+    ],
+}

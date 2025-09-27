@@ -1,0 +1,51 @@
+# docker-compose.yml
+
+services:
+  db:
+    image: "postgres:16"
+    container_name: ${PROJECT_NAME}_db
+    volumes:
+      - vims_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file: ./.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: . # Use the root directory as context
+      dockerfile: ./backend/Dockerfile # Path to the backend Dockerfile
+    container_name: ${PROJECT_NAME}_backend
+    command: /app/entrypoint.sh
+    volumes:
+      - ./backend:/app # Mount your local backend code into the container
+    ports:
+      - "8000:8000"
+    env_file: ./.env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: . # Use the root directory as context
+      dockerfile: ./frontend/Dockerfile # Path to the frontend Dockerfile
+    container_name: ${PROJECT_NAME}_frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Isolate node_modules inside the container
+    ports:
+      - "3000:3000"
+    env_file: ./.env
+    restart: unless-stopped
+
+volumes:
+  vims_db:
